@@ -1,13 +1,133 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: 'Nunito', sans-serif;
+}
+.paginate{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.paginate li{
+  list-style: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.paginate li:hover{
+  background-color: #000;
+  color: #fff;
+}
+.paginate li.active{
+  background-color: #000;
+  color: #fff;
+} 
+
+
+.slider-container {
+  position: relative;
+  width: 60%;
+  height: 30%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0f0f0, #f9f9f9);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.slider-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slider-container .slick-dots {
+  bottom: 10px;
+}
+
+.slider-container .slick-dots li button:before {
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.75;
+}
+
+.slider-container .slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #fff;
+  font-size: 14px;
+}
+
+.slider-container .slick-prev,
+.slider-container .slick-next {
+  background: rgba(218, 133, 133, 0.8);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+  ;
+}
+
+.slider-container .slick-prev:hover,
+.slider-container .slick-next:hover {
+  background: rgba(101, 6, 6, 0.618);
+}
+
+.slider-container .slick-prev {
+  left: 20px;
+}
+
+.slider-container .slick-next {
+  right: 20px;
+}
+
+/* Genel yükleme bileşeni container'ı */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Dönen yükleme animasyonu */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 8px solid #e0e0e0;
+  border-top: 8px solid #3498db; /* Ana renk buradan geliyor */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Yükleme yazısı */
+.loading-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3498db;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
